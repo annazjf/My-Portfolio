@@ -4,6 +4,7 @@ import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
+import MotionToggle from "./components/MotionToggle";
 // import AchievementsSection from "./components/AchievementsSection";
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <Navbar />
       <div className="container mt-24 mx-auto px-12 py-4">
+        <div className="mb-4 flex justify-center">
+          <MotionToggle />
+        </div>
         <HeroSection />
         {/* <AchievementsSection /> */}
         <AboutSection />

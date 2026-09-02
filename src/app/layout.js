@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { MotionPreferenceProvider } from './components/MotionPreferenceProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,7 +35,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href={starIcon} type="image/svg+xml" />
         <link rel="shortcut icon" href={starIcon} type="image/svg+xml" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <MotionPreferenceProvider>{children}</MotionPreferenceProvider>
+      </body>
     </html>
   )
 }

@@ -6,6 +6,16 @@ import { motion, useInView } from "framer-motion";
 
 const projectsData = [
   {
+    id: 9,
+    title: "Data Case Study Project: AI-Powered Strategic Planning Platform",
+    description: "Built and validated the data foundation that helps business leaders confidently interact with operational metrics through an AI-enabled platform. 2026.6",
+    image: "/images/performance-forecast-review.png",
+    tag: ["All", "Data"],
+    gitUrl: "/",
+    previewUrl: "/projects/performance-forecast-review",
+    type: "dashboard"
+  },
+  {
     id: 1,
     title: "Shipment Fraud Detection Dashboard",
     description: "Advanced fraud detection and visualization project built with Looker Studio to monitor high-volume shipping transactions, identify anomalies, and quantify fraud risk in global logistics. 2025.7",

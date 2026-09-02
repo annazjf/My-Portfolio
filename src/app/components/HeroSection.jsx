@@ -5,9 +5,11 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ResumeModal from "./ResumeModal";
+import { useMotionPreference } from "./MotionPreferenceProvider";
 
 const HeroSection = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const { reduceMotion } = useMotionPreference();
 
   return (
     <section className="pb-16 sm:pb-8 lg:py-16">
@@ -23,37 +25,40 @@ const HeroSection = () => {
               Hello, I&apos;m{""}
             </span>
             <br></br>
-            <TypeAnimation
-              sequence={[
-                "Annabel Zhuang",
-                1000,
-                "Data Analyst",
-                1000,
-                "BI Analyst",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
+            {reduceMotion ? (
+              <span className="whitespace-nowrap">Annabel Zhuang</span>
+            ) : (
+              <TypeAnimation
+                sequence={[
+                  "Annabel Zhuang",
+                  1000,
+                  "Data Analyst",
+                  1000,
+                  "BI Analyst",
+                  1000,
+                ]}
+                wrapper="span"
+                className="whitespace-nowrap"
+                speed={50}
+                repeat={Infinity}
+              />
+            )}
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Dream boldly, analyze deeply, live brightly — exploring the world through data, creativity, and a genuine curiosity for how things connect.
+            Curious about people, fascinated by how things connect, and always <span className="whitespace-nowrap">learning along the way.</span>
           </p>
-          <div>
+          <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/#contact"
-              className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-200 text-white text-lg font-semibold"
+              className="inline-block w-full sm:w-fit rounded-full border-2 border-primary-500 px-6 py-3 text-xl text-white hover:border-white hover:bg-white/5 cursor-pointer"
             >
               Contact Me
             </Link>
             <button
               onClick={() => setIsResumeModalOpen(true)}
-              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
+              className="inline-block w-full sm:w-fit rounded-full border-2 border-primary-500 px-6 py-3 text-xl text-white hover:border-white hover:bg-white/5 cursor-pointer"
             >
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 text-lg font-semibold">
-                View Resume
-              </span>
+              View Resume
             </button>
           </div>
         </motion.div>
