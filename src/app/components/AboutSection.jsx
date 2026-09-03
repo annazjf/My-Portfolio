@@ -41,9 +41,12 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
-        <li>Google Business Intelligence</li>
-        <li>GitHub Foundations</li>
+        <li>Generative AI Leader Certification</li>
         <li>Google Cloud AI Agents</li>
+        <li>Databricks Fundamentals</li>
+        <li>GitHub Foundations</li>
+        <li>Microsoft DP-600: Fabric Analytics Engineer Associate</li>
+        <li>Microsoft DP-700: Fabric Data Engineer Associate</li>
       </ul>
     ),
   },
