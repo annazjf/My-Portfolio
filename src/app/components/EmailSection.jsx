@@ -1,34 +1,36 @@
 "use client";
 import React, { useState } from "react";
-import emailjs from '@emailjs/browser';
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setEmailError("");
 
     try {
-      // EmailJS configuration
-      const result = await emailjs.sendForm(
-        'service_07zqpll', // Your EmailJS service ID
-        'template_z4b23dv', // Your EmailJS template ID
-        e.target,
-        'JUI1W8yLn2IySCF6p' // Your EmailJS public key
+      await emailjs.sendForm(
+        "service_07zqpll",
+        "template_z4b23dv",
+        e.currentTarget,
+        "JUI1W8yLn2IySCF6p"
       );
 
-      console.log('✅ Email sent successfully:', result.text);
       setEmailSubmitted(true);
-      e.target.reset(); // Clear the form
+      e.currentTarget.reset();
     } catch (error) {
-      console.error('❌ Failed to send email:', error);
-      alert('Failed to send message. Please try again.');
+      console.error("Failed to send email:", error);
+      setEmailError(
+        error?.text || error?.message || "EmailJS could not send your message."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -128,6 +130,11 @@ const EmailSection = () => {
                 placeholder="Let's talk about..."
               />
             </div>
+            {emailError && (
+              <p className="mb-4 text-sm text-red-400" role="alert">
+                {emailError}
+              </p>
+            )}
             <button
               type="submit"
               disabled={isLoading}
